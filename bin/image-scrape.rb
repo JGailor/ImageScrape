@@ -2,12 +2,13 @@ $: << File.join(File.dirname(__FILE__), "..", "lib")
 
 require 'image_scrape'
 
-if ARGV.size < 2
+if ARGV.size < 3
   puts "usage: ruby image-scrape.rb url selector <output-dir>"
 end
 
 url = ARGV[0]
 selector = ARGV[1]
-output = ARGV[2] ? ARGV[2] : "."
+attribute = ARGV[2]
+output = ARGV[3] ? ARGV[3] : "."
 
-ImageScrape.run(ARGV[0], selector, ImageScrape::Storage::FileSystem.new(output))
+ImageScrape.run(url, selector, attribute, ImageScrape::Storage::FileSystem.new(output))

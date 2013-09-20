@@ -6,10 +6,12 @@ require "image_scrape/storage"
 
 class ImageScrape
   class << self
-    def run(url, selector, storage = ImageScrape::Storage::FileSystem.new)
+    def run(url, selector, attribute, storage = ImageScrape::Storage::FileSystem.new)
       fetcher = ImageScrape::Fetcher.new()
+      
       results = fetcher.fetch(url)
-      images = ImageScrape::Parser.parse(results, selector)
+      
+      images = ImageScrape::Parser.parse(results, selector, attribute)
 
       images.each do |image|
         begin

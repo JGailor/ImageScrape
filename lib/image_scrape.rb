@@ -7,12 +7,13 @@ require "image_scrape/storage"
 class ImageScrape
   class << self
     def run(url, selector, storage = ImageScrape::Storage::FileSystem.new)
-      results = ImageScrape::Fetcher.fetch(url)
+      fetcher = ImageScrape::Fetcher.new()
+      results = fetcher.fetch(url)
       images = ImageScrape::Parser.parse(results, selector)
 
       images.each do |image|
         begin
-          img = ImageScrape::Fetcher.fetch(image)
+          img = fetcher.fetch(image)
           storage.store(image.split("/").last, img)
         rescue
           puts "Could not fetch '#{image}'"

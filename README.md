@@ -9,10 +9,10 @@ To run it, just make sure you do a bundle install
 %> bundle install
 ```
 
-And then you can run it like so
+And then you can run it like so.
 
 ```
-%> ruby bin/image-scrape.rb url css-selector <output-dir>
+%> ruby bin/image-scrape.rb url css-selector html-attribute <output-dir>
 ```
 
 Have fun.

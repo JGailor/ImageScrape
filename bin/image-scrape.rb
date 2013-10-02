@@ -3,7 +3,7 @@ $: << File.join(File.dirname(__FILE__), "..", "lib")
 require 'image_scrape'
 
 if ARGV.size < 3
-  puts "usage: ruby image-scrape.rb url selector <output-dir>"
+  puts "usage: ruby image-scrape.rb url selector attribute <output-dir>"
 end
 
 url = ARGV[0]
